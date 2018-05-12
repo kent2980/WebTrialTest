@@ -6,6 +6,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<link href="./css/webtest.css" rel="stylesheet">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <%
 	TestLoader loader = (TestLoader) request.getAttribute("answerLoader");
@@ -23,7 +24,7 @@
 		out.println("<h2>" + answer.getQtNo() + "</h2>");
 		//ここに画像を表示したい
 		String image = String.format("%02d", answer.getQtCode()) + String.format("%02d", answer.getQtNo());
-		out.println("<img src=\"./picture/" + image + ".jpg\">\n");
+		out.println("<img src=\"./picture/" + image + ".jpg\" class=\"question\">\n");
 		out.println("<p>");
 		for(int t = 0x0041 ; t < (0x0041 + columns);t++){
 			char s = (char) t;
