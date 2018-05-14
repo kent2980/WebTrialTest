@@ -9,7 +9,7 @@ public class DataBaseConnectTest {
 
 	public static void main(String[] args) {
 		TestLoader loader = new TestLoader();
-		List<QtAnswer> list = loader.getAnswer(1);
+		List<QtAnswer> list = loader.getQtAnswer(1);
 		System.out.println(list.get(0).getAnswer1());
 	}
 

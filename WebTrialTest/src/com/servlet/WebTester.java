@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.model.TestLoader;
+import com.model.TestScoring;
 
 /**
  * Servlet implementation class WebTester 
@@ -41,13 +42,20 @@ public class WebTester extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		
+		//文字コードをセット
+		request.setCharacterEncoding("UTF-8");
+		//解答を取得
+		TestScoring scoring = new TestScoring(request);
+		//採点する
+		request.setAttribute("scoring", scoring);
 		doGet(request, response);
+		
 	}
 
 	@Override
 	public void init() throws ServletException {
 		loader = new TestLoader();
 	}
-
+	
 }
