@@ -3,7 +3,7 @@
 body {
   margin: 40px auto;
   padding: 0;
-  width: 80vw;
+  width: 90vw;
   max-width:600px;
   background: rgba(128, 225, 198, 0.12);
 }
@@ -11,7 +11,7 @@ body {
 img.question {
   background: rgb(255,255,255);
   padding:10px;
-  width: 80vw;
+  width: 85vw;
   max-width:600px;
   height: auto;
   box-shadow: 2px 2px 6px;
