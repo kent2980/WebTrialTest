@@ -125,6 +125,17 @@ public class TestLoader implements Serializable{
 	}
 	
 	/**
+	 * 指定された問題の解答を出力します
+	 * @param qtCode 出題コード
+	 * @param qtNo 出題問題
+	 * @return 解答
+	 */
+	public List<String> getAnswer(int qtCode, int qtNo) {
+		List<String> ans = answer.stream().filter(s->s.getQtCode()==qtCode).filter(s->s.getQtNo()==qtNo).findFirst().get().getAnswerList();
+		return ans;
+	}
+	
+	/**
 	 * テストの正解/不正解を判定します。
 	 * @param qtCode
 	 * @param answerList
@@ -148,6 +159,12 @@ public class TestLoader implements Serializable{
 		return scoring;
 	}
 	
+	/**
+	 * 採点結果をダウンロードします
+	 * @param qtCode 出題コード
+	 * @param scoring 結果リスト
+	 * @return 採点結果
+	 */
 	public BigDecimal getScoring(int qtCode,List<Boolean> scoring) {
 		System.out.println(qtCode);
 		//出題数をダウンロードする

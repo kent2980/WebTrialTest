@@ -7,6 +7,11 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+/**
+ * リクエストパラメータから回答をリスト化するクラス
+ * @author kent2
+ *
+ */
 public class TestScoring implements Serializable{
 	/**
 	 * 
@@ -16,10 +21,19 @@ public class TestScoring implements Serializable{
 	
 	public TestScoring() {}
 	
+	/**
+	 * コンストラクタ
+	 * @param request
+	 */
 	public TestScoring(HttpServletRequest request) {
 		this.answerList = setAnswerList(request);
 	}
 	
+	/**
+	 * リクエストパラメータから全ての回答をリストにセットします
+	 * @param request
+	 * @return 解答リスト
+	 */
 	private List<String[]> setAnswerList(HttpServletRequest request) {
 		int qtCount = Integer.valueOf(request.getParameter("qtcount"));
 		List<String[]> qList = new ArrayList<>();
@@ -33,6 +47,10 @@ public class TestScoring implements Serializable{
 		return serialVersionUID;
 	}
 
+	/**
+	 * リクエストパラメータから取得した回答をリストで返します
+	 * @return 回答リスト
+	 */
 	public List<String[]> getAnswerList() {
 		return answerList;
 	}
