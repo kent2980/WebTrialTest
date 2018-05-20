@@ -99,30 +99,44 @@
 		if(inputType.equals("checkbox"));
 		String[] ww = pageRequest?request.getParameterValues("q" + i):null;
 	//qtCodeとq(i)パラメータがある場合は選択された項目を選択しておく	
-		out.println("<p>");
+		out.println("<div class=\"checkbox\">");
 		for(int t = 0 ; t < columns;t++){	//項目の数だけ繰り返し処理
 			char s = (char) (0x0041 + t);	//項目名を指定
 			//POST or GET で処理を分岐する
+			String check = "checked";
+			String input1 = "<input type=\"" + inputType + "\" name=\"q" + i + "\" value=\"" + s + "\" " + check + " class=\"checkbox01-input\">";
+			String input2 = "<span class=\"checkbox01-parts\">" + s + "</span>";
 			if(request.getMethod().equals("POST")){
 				try{
 					List<String> qi = Arrays.asList(request.getParameterValues("q" + i));
 					for(int n = 0; ;n++){
 						String qu = qi.get(n);
 						if(String.valueOf(s).equals(qu)){
-							out.println("<label><input type=\"" + inputType + "\" name=\"q" + i + "\" value=\"" + s + "\" checked>" + s + "</label>");
+							out.println("<label>");
+							out.println(input1);
+							out.println(input2);
+							out.println("</label>");
 							break;
 						}
 					}
 				}catch(IndexOutOfBoundsException | NullPointerException e){
-					out.println("<label><input type=\"" + inputType + "\" name=\"q" + i + "\" value=\"" + s + "\">" + s + "</label>");	
+					input1 = input1.replace(check,"");
+					out.println("<label>");
+					out.println(input1);
+					out.println(input2);
+					out.println("</label>");
 				}				
 			}else{
+				input1 = input1.replace(check,"");
 				//<label><input type="radio" name="q1" value="A">A</label>
-				out.println("<label><input type=\"" + inputType + "\" name=\"q" + i + "\" value=\"" + s + "\">" + s + "</label>");				
+				out.println("<label>");
+				out.println(input1);
+				out.println(input2);
+				out.println("</label>");
 			}
 			
 		}
-		out.println("</p>");
+		out.println("</div>");
 	//採点結果があれば表示する
 		if(scoringList!=null && request.getMethod().equals("POST")){
 			out.println("<p>");
